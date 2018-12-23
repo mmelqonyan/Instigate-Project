@@ -1,0 +1,21 @@
+{
+  "name": "myfolder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "3.0.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.6.13",
+    "jsonwebtoken": "^8.4.0",
+    "mongodb": "^3.1.6",
+    "mongoose": "^5.3.15",
+    "nodemon": "^1.18.8"
+  }
+}
