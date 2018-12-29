@@ -41,12 +41,11 @@ res.sendStatus(200);
 });  */
 app.post('/profile', (req, res, next) =>{
    
-    console.log("req.body.name"+ req.body.name)
-    arr.push(req.body.name)
+    console.log("req.body.name"+ req.body.name.name)
+    arr.push(req.body.name.name)
     var newName = {
-      name: arr
-    }
-   
+        data: req.body.name.name
+    }    
     var id = req.body.current_id;
     console.log(objectId(id));
     db.collection('users').updateOne({"_id": objectId(id)}, {$set: newName},
