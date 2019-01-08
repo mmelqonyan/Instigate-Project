@@ -11,7 +11,6 @@ users.use(cors());
 process.env.Secret_KEY = "secret";
 
 users.post("/register", (req, res) => {
-    console.log('>>>>>>>>>>>>>>>>>>> REG')
     const now = new Date();
     const userData = {
         first_name: req.body.first_name,
@@ -62,7 +61,7 @@ users.post('/login', (req, res) => {
                     let token = jwt.sign(payload, process.env.Secret_KEY, {
                         expiresIn: 1440
                     })
-                    res.send({token: token, status: 200});
+                    res.send({ token: token, status: 200 });
 
                 } else {
                     res.status(401).json({ error: "User does not exsist" })
@@ -77,20 +76,20 @@ users.post('/login', (req, res) => {
 })
 
 users.get('/profile', (req, res) => {
-    var decoded = jwt.verify(req.headers['authorization'], process. env.SECRET_KEY)
+    var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
     User.findOne({
-        _id: decoded._id,   
+        _id: decoded._id,
     })
-    .then(user => {
-        if(user){
-            res.json(user)
-        }else{
-            res.send("User does not exsist")
-        }
-    })
-    .catch(err =>{
-     res.send("error: " + err)   
-    })
+        .then(user => {
+            if (user) {
+                res.json(user)
+            } else {
+                res.send("User does not exsist")
+            }
+        })
+        .catch(err => {
+            res.send("error: " + err)
+        })
 })
 
 
