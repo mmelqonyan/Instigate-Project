@@ -54,9 +54,11 @@ app.post('/profile', (req, res, next) => {
 app.get('/profile', (req, res) => {
     const token = req.headers['token'];
     var current_id;
-    if (token !== undefined) {
+    if (token) {
         const decoded = jwt_decode(token)
         current_id = decoded._id;
+    }else{
+        res.sendStatus(401);
     }
     var id = current_id;
     db.collection('users').findOne({ "_id": objectId(id) }, (err, data) => {
@@ -68,6 +70,6 @@ app.get('/profile', (req, res) => {
     })
 })
 
-app.listen(port, () => {
+app.listen(port, () => {//port
     console.log("Server is runing on port:" + port)
 })
